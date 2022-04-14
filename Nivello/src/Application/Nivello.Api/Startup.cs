@@ -35,7 +35,7 @@ namespace Nivello.Api
             services.AddControllers();
             services.AddMediatR(typeof(CreateProductCommand).GetTypeInfo().Assembly);
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<ICustomerRepository, ICustomerRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IAuctionsBidRepository, AuctionsBidRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddCors(co => co.AddPolicy("Policy", builder =>
