@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -9,9 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Customer\CommandHandlers\" />
-    <Folder Include="Commands\Customer\Commands\" />
-    <Folder Include="Commands\Customer\Validators\" />
     <Folder Include="Commands\Auctions\CommandHandlers\" />
     <Folder Include="Commands\Auctions\Commands\" />
     <Folder Include="Commands\Auctions\Validators\" />

@@ -12,6 +12,9 @@ namespace Nivello.Lib.Nivello.Lib.Domain.Data.Models
 
         public Guid Id { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        public bool IsDelete { get; private set; }
+
+        public void DeleteEntity() => IsDelete = true;
 
         public bool Equals(Entity other)
         {

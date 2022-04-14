@@ -21,7 +21,7 @@ namespace Nivello.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateProductCommand command)
+        public async Task<IActionResult> Post([FromForm] CreateProductCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
