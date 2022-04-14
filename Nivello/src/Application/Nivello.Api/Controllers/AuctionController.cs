@@ -1,23 +1,24 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Nivello.Domain.Commands.Customer.Commands;
+using Nivello.Domain.Commands.Auctions.Commands;
 using System.Threading.Tasks;
 
 namespace Nivello.Api.Controllers
 {
-    [Route("api/v1/customer")]
+    [Route("api/v1/auction")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class AuctionController : ControllerBase
     {
         public IMediator _mediator;
 
-        public CustomerController(IMediator mediator)
+        public AuctionController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateCustomerCommand command)
+        [Route("bid")]
+        public async Task<IActionResult> Post([FromBody] CreateAuctionsBidCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

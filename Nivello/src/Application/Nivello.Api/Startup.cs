@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Nivello.Domain.Commands.Product.Commands;
 using Nivello.Infrastructure.Data.Context;
+using Nivello.Infrastructure.Data.Repository.Auctions;
+using Nivello.Infrastructure.Data.Repository.Customers;
 using Nivello.Infrastructure.Data.Repository.Products;
 using System.Reflection;
 
@@ -29,6 +31,8 @@ namespace Nivello.Api
             services.AddControllers();
             services.AddMediatR(typeof(CreateProductCommand).GetTypeInfo().Assembly);
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICustomerRepository, ICustomerRepository>();
+            services.AddScoped<IAuctionsBidRepository, AuctionsBidRepository>();
             services.AddCors(co => co.AddPolicy("Policy", builder =>
             {
                 builder.AllowAnyOrigin()

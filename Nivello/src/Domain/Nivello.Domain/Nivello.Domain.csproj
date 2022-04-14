@@ -8,10 +8,4 @@
     <ProjectReference Include="..\..\Infrastructure\Nivello.Infrastructure\Nivello.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\Auctions\CommandHandlers\" />
-    <Folder Include="Commands\Auctions\Commands\" />
-    <Folder Include="Commands\Auctions\Validators\" />
-  </ItemGroup>
-
 </Project>

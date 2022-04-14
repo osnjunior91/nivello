@@ -17,6 +17,14 @@ namespace Nivello.Infrastructure.Data.Model
             IsActive = isActive;
         }
 
+        public AuctionsBid(Guid productId, Guid customerId, float amount)
+        {
+            ProductId = productId;
+            CustomerId = customerId;
+            Amount = amount;
+            IsActive = true;
+        }
+
         public Guid ProductId { get; private set; }
         public Product Product { get; private set; }
         public Guid CustomerId { get; private set; }
