@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Product.Commands;
+using Nivello.Domain.Queries.Products.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace Nivello.Api.Controllers
         public async Task<IActionResult> Post([FromForm] CreateProductCommand command)
         {
             var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllProductsQuery());
             return Ok(result);
         }
     }

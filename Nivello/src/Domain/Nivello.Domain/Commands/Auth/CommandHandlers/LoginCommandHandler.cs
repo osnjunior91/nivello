@@ -1,4 +1,10 @@
-﻿using FluentValidation;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Nivello.Domain.Commands.Auth.Commands;
@@ -10,12 +16,6 @@ using Nivello.Infrastructure.Data.Repository.Customers;
 using Nivello.Lib.Nivello.Lib.Domain.Commands;
 using Nivello.Lib.Nivello.Lib.Domain.Commands.Interfaces;
 using Nivello.Lib.Nivello.Lib.Infrastructure.Data.Models;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Nivello.Domain.Commands.Auth.CommandHandlers
 {
