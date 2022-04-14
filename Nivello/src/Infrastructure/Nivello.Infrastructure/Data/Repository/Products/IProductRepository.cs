@@ -11,5 +11,6 @@ namespace Nivello.Infrastructure.Data.Repository.Products
     {
         Task CreatedAsync(Product product);
         Task<IEnumerable<Product>> WhereAsync(Expression<Func<Product, bool>> filter);
+        Task<Product> FirstOrDefaultAsync(Expression<Func<Product, bool>> filter);
     }
 }

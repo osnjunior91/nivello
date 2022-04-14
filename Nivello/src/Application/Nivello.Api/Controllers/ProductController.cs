@@ -34,5 +34,13 @@ namespace Nivello.Api.Controllers
             var result = await _mediator.Send(new GetAllProductsQuery());
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = await _mediator.Send(new GetProductByIdQuery(id));
+            return Ok(result);
+        }
     }
 }

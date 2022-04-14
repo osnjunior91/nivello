@@ -24,10 +24,14 @@ namespace Nivello.Infrastructure.Data.Repository.Products
             _dataContext.SaveChangesAsync().Wait();
         }
 
+        public async Task<Product> FirstOrDefaultAsync(Expression<Func<Product, bool>> filter)
+        {
+            return await _dataset.Include(fk => fk.SystemAdmin).SingleOrDefaultAsync(filter);
+        }
+
         public async Task<IEnumerable<Product>> WhereAsync(Expression<Func<Product, bool>> filter)
         {
-            return await _dataset.AsQueryable().Where(filter)
-                .Include(fk => fk.SystemAdmin).ToListAsync();
+            return await _dataset.AsQueryable().Where(filter).ToListAsync();
         }
     }
 }
