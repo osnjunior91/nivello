@@ -1,14 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Nivello.Infrastructure.Data.Model;
 
 namespace Nivello.Infrastructure.Data.Context
 {
     public class DataContext : DbContext
     {
+        public DbSet<SystemAdmin> SystemAdmin { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<AuctionsBid> AuctionsBid { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SystemAdmin>()
+                .HasData(new SystemAdmin("Admin", "admin@nivello.com", "123456"));
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

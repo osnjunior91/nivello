@@ -5,7 +5,7 @@ namespace Nivello.Infrastructure.Data.Model
 {
     public class Product : Entity
     {
-
+        public Product() { }
         public string Name { get; private set; }
         public float Price { get; private set; }
         public byte[] Imagem { get; private set; }
