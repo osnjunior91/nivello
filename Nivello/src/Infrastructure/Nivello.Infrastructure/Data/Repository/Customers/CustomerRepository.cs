@@ -4,6 +4,7 @@ using Nivello.Infrastructure.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,11 @@ namespace Nivello.Infrastructure.Data.Repository.Customers
         {
             await _dataset.AddAsync(customer);
             _dataContext.SaveChangesAsync().Wait();
+        }
+
+        public async Task<Customer> FirstOrDefaultAsync(Expression<Func<Customer, bool>> filter)
+        {
+            return await _dataset.SingleOrDefaultAsync(filter);
         }
     }
 }

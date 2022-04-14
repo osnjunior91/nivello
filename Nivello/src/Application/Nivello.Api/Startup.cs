@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Nivello.Domain.Commands.Product.Commands;
 using Nivello.Infrastructure.Data.Context;
+using Nivello.Infrastructure.Data.Repository.Admins;
 using Nivello.Infrastructure.Data.Repository.Auctions;
 using Nivello.Infrastructure.Data.Repository.Customers;
 using Nivello.Infrastructure.Data.Repository.Products;
@@ -36,6 +37,7 @@ namespace Nivello.Api
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerRepository, ICustomerRepository>();
             services.AddScoped<IAuctionsBidRepository, AuctionsBidRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddCors(co => co.AddPolicy("Policy", builder =>
             {
                 builder.AllowAnyOrigin()
