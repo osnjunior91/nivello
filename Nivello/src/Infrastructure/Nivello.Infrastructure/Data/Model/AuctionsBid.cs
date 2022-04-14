@@ -5,6 +5,17 @@ namespace Nivello.Infrastructure.Data.Model
 {
     public class AuctionsBid : Entity
     {
+        public AuctionsBid(Guid productId, Product product, Guid customerId, 
+            Customer customer, float amount, bool isActive)
+        {
+            ProductId = productId;
+            Product = product;
+            CustomerId = customerId;
+            Customer = customer;
+            Amount = amount;
+            IsActive = isActive;
+        }
+
         public Guid ProductId { get; private set; }
         public Product Product { get; private set; }
         public Guid CustomerId { get; private set; }

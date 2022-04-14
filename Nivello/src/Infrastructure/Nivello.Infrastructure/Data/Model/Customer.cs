@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nivello.Lib.Nivello.Lib.Infrastructure.Data.Models;
+using System;
 
 namespace Nivello.Infrastructure.Data.Model
 {
     public class Customer : User
     {
-        public DateTime DateOfBirth { get; set; }
+        public Customer(string name, string email, string password, DateTime dateOfBirth)
+            : base(name, email, password)
+        {
+            DateOfBirth = dateOfBirth;
+        }
+        public DateTime DateOfBirth { get; private set; }
     }
 }

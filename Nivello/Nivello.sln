@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{560904AE-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B74F17AA-D0DB-465A-83B5-B0B999936DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nivello.Api", "src\Application\Nivello.Api\Nivello.Api.csproj", "{03E2F524-398B-474C-BDF1-6B25043ADC14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nivello.Api", "src\Application\Nivello.Api\Nivello.Api.csproj", "{03E2F524-398B-474C-BDF1-6B25043ADC14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nivello.Test", "src\Test\Nivello.Domain.Test\Nivello.Test.csproj", "{546D77A4-BE50-4641-AC2F-FBFA7A9D9B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nivello.Test", "src\Test\Nivello.Domain.Test\Nivello.Test.csproj", "{546D77A4-BE50-4641-AC2F-FBFA7A9D9B52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nivello.Domain", "src\Domain\Nivello.Domain\Nivello.Domain.csproj", "{06345B68-7A02-40E1-B647-E6525FA139DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nivello.Domain", "src\Domain\Nivello.Domain\Nivello.Domain.csproj", "{06345B68-7A02-40E1-B647-E6525FA139DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nivello.Lib", "src\Shared\Nivello.Lib\Nivello.Lib.csproj", "{3DD10652-7885-4924-BF39-B224A1A5B387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nivello.Lib", "src\Shared\Nivello.Lib\Nivello.Lib.csproj", "{3DD10652-7885-4924-BF39-B224A1A5B387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nivello.Infrastructure", "src\Infrastructure\Nivello.Infrastructure\Nivello.Infrastructure.csproj", "{A7D92D36-6F06-41CD-84FE-C1A857A88BA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nivello.Infrastructure", "src\Infrastructure\Nivello.Infrastructure\Nivello.Infrastructure.csproj", "{A7D92D36-6F06-41CD-84FE-C1A857A88BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
