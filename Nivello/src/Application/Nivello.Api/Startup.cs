@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,7 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Nivello.Domain.Commands.Product.Commands;
 using Nivello.Infrastructure.Data.Context;
+using Nivello.Infrastructure.Data.Repository.Products;
+using System.Reflection;
 
 namespace Nivello.Api
 {
@@ -23,6 +27,8 @@ namespace Nivello.Api
         {
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetValue<string>("ConnectionString")));
             services.AddControllers();
+            services.AddMediatR(typeof(CreateProductCommand).GetTypeInfo().Assembly);
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddCors(co => co.AddPolicy("Policy", builder =>
             {
                 builder.AllowAnyOrigin()

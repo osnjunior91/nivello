@@ -12,8 +12,4 @@
     <ProjectReference Include="..\..\Domain\Nivello.Domain\Nivello.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
