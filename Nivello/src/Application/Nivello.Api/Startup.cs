@@ -1,10 +1,12 @@
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Nivello.Domain.Commands.Product.Commands;
 using Nivello.Infrastructure.Data.Context;
@@ -12,6 +14,7 @@ using Nivello.Infrastructure.Data.Repository.Auctions;
 using Nivello.Infrastructure.Data.Repository.Customers;
 using Nivello.Infrastructure.Data.Repository.Products;
 using System.Reflection;
+using System.Text;
 
 namespace Nivello.Api
 {
@@ -39,9 +42,55 @@ namespace Nivello.Api
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(swagger =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nivello.Api", Version = "v1" });
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Nivello.Api", Version = "v1" });
+
+                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+
+                    Description = "Coloque seu token aqui Ex: 'Bearer 12345abcdef'",
+                    Name = "authorization",
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+
+                });
+
+                swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+
+                    }
+                });
+            });
+
+            var key = Encoding.ASCII.GetBytes(Configuration["SecretKey"]);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
         }
 
@@ -60,6 +109,8 @@ namespace Nivello.Api
             app.UseCors("Policy");
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
