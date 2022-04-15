@@ -1,31 +1,13 @@
-.App {
-  width: revert;
-  display: revert;
+.app{
+    width: 100vw;
+    height: 100vh;
 }
-
-a {
-  color: #3EBBFF;
-}
-
-.description {
-  text-align: left !important;
-}
-
-.description-item {
-  font-size: medium;
-  color: black !important;
-}
-.network-icon {
-  font-size: 32px;
-}
-.carousel-detail{
-  width: 500px;
-}
-
-.carousel-detail-paper{
-  position: relative;
-  height: 600px;
-  background-size: 500px 600px;
-  overflow: hidden;
-  padding: 20px;
+.container{
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
