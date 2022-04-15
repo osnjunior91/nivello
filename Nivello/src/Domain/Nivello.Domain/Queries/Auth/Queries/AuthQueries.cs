@@ -1,12 +1,8 @@
 ﻿using Nivello.Lib.Nivello.Lib.Infrastructure.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Nivello.Domain.Commands.Auth.Queries
+namespace Nivello.Domain.Queries.Auth.Queries
 {
     public static class AuthQueries<T> where T : User
     {

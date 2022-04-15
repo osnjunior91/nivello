@@ -22,7 +22,7 @@ namespace Nivello.Domain.Queries.Products.QueryHandlers
 
         public async Task<QueryResult> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.FirstOrDefaultAsync(CustomerQueries.GetById(request.Id));
+            var products = await _productRepository.FirstOrDefaultAsync(ProductsQueries.GetById(request.Id));
             return new QueryResult(true, products);
         }
     }

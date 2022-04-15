@@ -24,7 +24,7 @@ namespace Nivello.Domain.Commands.Product.CommandHandlers
         {
             var validator = new DeleteProductCommandValidator();
             validator.ValidateAndThrow(request);
-            var product = await _productRepository.FirstOrDefaultAsync(CustomerQueries.GetById(request.Id));
+            var product = await _productRepository.FirstOrDefaultAsync(ProductsQueries.GetById(request.Id));
             if (product == null)
                 throw new ArgumentException("Produto nao encontrado");
             product.DeleteEntity();

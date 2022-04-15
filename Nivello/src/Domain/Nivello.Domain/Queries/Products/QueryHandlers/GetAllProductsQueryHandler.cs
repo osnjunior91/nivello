@@ -21,7 +21,7 @@ namespace Nivello.Domain.Queries.Products.QueryHandlers
         }
         public async Task<QueryResult> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.WhereAsync(CustomerQueries.GetAll());
+            var products = await _productRepository.WhereAsync(ProductsQueries.GetAll());
             return new QueryResult(true, products);
         }
     }

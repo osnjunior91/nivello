@@ -25,6 +25,8 @@ namespace Nivello.Infrastructure.Data.Model
             IsActive = true;
         }
 
+        public void Inactivate() => IsActive = false;
+
         public Guid ProductId { get; private set; }
         public Product Product { get; private set; }
         public Guid CustomerId { get; private set; }
