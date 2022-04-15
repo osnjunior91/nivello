@@ -32,7 +32,8 @@ namespace Nivello.Infrastructure.Data.Repository.Products
 
         public async Task<Product> FirstOrDefaultAsync(Expression<Func<Product, bool>> filter)
         {
-            return await _dataset.Include(fk => fk.SystemAdmin).SingleOrDefaultAsync(filter);
+            return await _dataset.Include(fk => fk.SystemAdmin)
+                .Include(fk2 => fk2.Bids).SingleOrDefaultAsync(filter);
         }
 
         public async Task<IEnumerable<Product>> WhereAsync(Expression<Func<Product, bool>> filter)

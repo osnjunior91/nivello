@@ -27,7 +27,7 @@ namespace Nivello.Domain.Commands.Product.CommandHandlers
             validator.ValidateAndThrow(request);
             var image = await request.Imagem.GetBytes();
             var product = new Infrastructure.Data.Model.Product(request.Name, request.Price,
-                image, request.SystemAdminId, null);
+                image, request.SystemAdminId, null, null);
             await _productRepository.CreatedAsync(product);
             return new CommandResult(true, product);
         }

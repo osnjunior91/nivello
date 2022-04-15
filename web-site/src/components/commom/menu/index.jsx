@@ -14,13 +14,13 @@ function Menu() {
                         Nivello
                     </Typography>
                     <div>
-                        <Link className="link" to="/upload">
-                            Carregar Arquivo
+                        <Link className="link" to="/products/list">
+                            Produtos
                         </Link>
                     </div>
                     <div>
                         <Link className="link" to="/transactions">
-                            Visualizar dados
+                            Visualizar Lances
                         </Link>
                     </div>
                 </Toolbar>
