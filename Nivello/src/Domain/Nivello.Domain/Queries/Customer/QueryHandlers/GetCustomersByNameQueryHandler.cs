@@ -1,5 +1,5 @@
 ﻿using Nivello.Domain.Queries.Customer.Queries;
-using Nivello.Infrastructure.Data.Repository.Products;
+using Nivello.Infrastructure.Data.Repository.Customers;
 using Nivello.Lib.Nivello.Lib.Domain.Queries;
 using Nivello.Lib.Nivello.Lib.Domain.Queries.Interfaces;
 using System.Threading;
@@ -9,15 +9,16 @@ namespace Nivello.Domain.Queries.Customer.QueryHandlers
 {
     public class GetCustomersByNameQueryHandler : IQueryHandler<GetCustomersByNameQuery>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public GetCustomersByNameQueryHandler(IProductRepository productRepository)
+        public GetCustomersByNameQueryHandler(ICustomerRepository customerRepository)
         {
-            _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
         public async Task<QueryResult> Handle(GetCustomersByNameQuery request, CancellationToken cancellationToken)
         {
-            return new QueryResult(true, null, "Ok");
+            var response = await _customerRepository.WhereAsync(CustomerQueries.GetByName(request.Name));
+            return new QueryResult(true, response);
         }
     }
 }
