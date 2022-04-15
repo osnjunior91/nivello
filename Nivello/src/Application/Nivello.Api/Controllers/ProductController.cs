@@ -42,5 +42,14 @@ namespace Nivello.Api.Controllers
             var result = await _mediator.Send(new GetProductByIdQuery(id));
             return Ok(result);
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteById(Guid id)
+        {
+            var result = await _mediator.Send(new DeleteProductCommand(id));
+            return Ok(result);
+        }
+
     }
 }

@@ -24,6 +24,12 @@ namespace Nivello.Infrastructure.Data.Repository.Products
             _dataContext.SaveChangesAsync().Wait();
         }
 
+        public async Task UpdateAsync(Product product)
+        {
+            _dataset.Update(product);
+            await _dataContext.SaveChangesAsync();
+        }
+
         public async Task<Product> FirstOrDefaultAsync(Expression<Func<Product, bool>> filter)
         {
             return await _dataset.Include(fk => fk.SystemAdmin).SingleOrDefaultAsync(filter);
