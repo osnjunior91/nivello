@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Auth.Commands;
+using Nivello.Lib.Nivello.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Nivello.Api.Controllers
 {
     [Route("api/v1/auth")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : ControllerBaseAPI
     {
         public IMediator _mediator;
 

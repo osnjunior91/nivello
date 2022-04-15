@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Customer.Commands;
 using Nivello.Domain.Queries.Customer.Queries;
+using Nivello.Lib.Nivello.Application;
 using System.Threading.Tasks;
 
 namespace Nivello.Api.Controllers
 {
     [Route("api/v1/customer")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : ControllerBaseAPI
     {
         public IMediator _mediator;
 

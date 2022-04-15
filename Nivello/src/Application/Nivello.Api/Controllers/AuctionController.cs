@@ -1,13 +1,14 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Auctions.Commands;
+using Nivello.Lib.Nivello.Application;
 using System.Threading.Tasks;
 
 namespace Nivello.Api.Controllers
 {
     [Route("api/v1/auction")]
     [ApiController]
-    public class AuctionController : ControllerBase
+    public class AuctionController : ControllerBaseAPI
     {
         public IMediator _mediator;
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Product.Commands;
 using Nivello.Domain.Queries.Products.Queries;
+using Nivello.Lib.Nivello.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Nivello.Api.Controllers
 {
     [Route("api/v1/product")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : ControllerBaseAPI
     {
         public IMediator _mediator;
 
