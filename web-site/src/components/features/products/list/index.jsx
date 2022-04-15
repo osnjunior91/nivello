@@ -1,34 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 import { ImgMediaCard } from "../../../commom";
 import { GetProducts } from "../../../../services";
 
 function ListProducts() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [transactions, setTransactions] = useState([]);
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         GetProducts()
             .then(({ data }) => {
-                console.log(data.items);
+                setProducts(data.data);
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
     return (
-        <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={3}
-        >
-            <ImgMediaCard />
-        </Grid>
+        <div>
+            <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                spacing={5}
+            >
+
+                {
+                    products?.map(item => {
+
+                        return (
+                            <Grid item
+                                xs={12 / products.length}
+                                container
+                                direction="column"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <ImgMediaCard item={item} />
+                            </Grid>
+                        )
+                    })
+                }
+            </Grid>
+        </div>
     )
 }
 
