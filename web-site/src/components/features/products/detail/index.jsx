@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
-
-import { GetProductById } from "../../../../services";
+import { useNavigate } from 'react-router-dom';
+import { GetProductById, AuctionBid } from "../../../../services";
 import { ProductDetailComponent, BidsTable, BidDialog } from "../../../commom";
 
 function DetailProduct() {
@@ -10,9 +10,20 @@ function DetailProduct() {
     const [product, setProduct] = useState([]);
     const [open, setOpen] = useState(false);
     const [bidAmount, setBidAmount] = useState(0);
+    const navigate = useNavigate();
 
     const submitBid = () => {
-        alert(bidAmount);
+        AuctionBid({
+            'productId': id,
+            'amount': bidAmount
+        })
+            .then(() => {
+                alert("Seu lance foi registrado com sucesso!");
+                navigate('/products/list');
+            })
+            .catch((error) => {
+                alert(error.response.data.split('\r\n')[0]);
+            });
     }
 
     useEffect(() => {

@@ -8,6 +8,11 @@ const GetProductById = (id) => {
     return BycodersApi.get(`/product/${id}`);
 }
 
+const AuctionBid = (bid) => {
+    return BycodersApi.post(`/auction/bid`, bid);
+}
+
+
 const UploadFile = (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -18,4 +23,4 @@ const Auth = (login) => {
     return BycodersApi.post('/auth/login', login);
 }
 
-export { GetProducts, GetProductById, UploadFile, Auth }
+export { GetProducts, GetProductById, UploadFile, Auth, AuctionBid }
