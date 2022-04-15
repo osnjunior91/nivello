@@ -3,7 +3,8 @@ import axios from 'axios';
 const BycodersApi = axios.create({
     baseURL: "https://localhost:44308/api/v1",
     headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token-auth')
     }
 });
 

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Auctions.Commands;
 using Nivello.Lib.Nivello.Application;
@@ -19,8 +20,10 @@ namespace Nivello.Api.Controllers
 
         [HttpPost]
         [Route("bid")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Post([FromBody] CreateAuctionsBidCommand command)
         {
+            command.CustomerId = GetCurrentUserId();
             var result = await _mediator.Send(command);
             return Ok(result);
         }

@@ -9,16 +9,16 @@ function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(true);
     const navigate = useNavigate();
     const submitForm = () => {
-        Auth({ email, password })
+        Auth({ email, password, isAdmin })
             .then(({ data }) => {
                 dispatch(Authentication_Success({
-                    token: data
+                    token: data.data
                 }));
-                sessionStorage.setItem('token-auth', data);
-                navigate('/upload');
+                sessionStorage.setItem('token-auth', data.data);
+                navigate('/products/list');
             })
             .catch((erro) => {
                 alert('Falha no login');
@@ -74,7 +74,9 @@ function Login() {
                     control={
                         <Checkbox
                             checked={isAdmin}
-                            onChange={(e) => setIsAdmin(e.target.value)}
+                            onChange={(e, item) => {
+                                setIsAdmin(item)
+                            }}
                             name="checkedB"
                             color="primary"
                         />

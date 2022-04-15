@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Customer.Commands;
 using Nivello.Domain.Queries.Customer.Queries;
@@ -27,6 +28,7 @@ namespace Nivello.Api.Controllers
 
         [HttpGet]
         [Route("name")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetByName([FromQuery] GetCustomersByNameQuery query)
         {
             var result = await _mediator.Send(query);

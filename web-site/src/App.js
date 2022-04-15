@@ -13,12 +13,20 @@ function App() {
       <div className="container" >
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="products/list" element={<ListProducts />} />
-          <Route path="products/:id" element={<DetailProduct />} />
-          <Route path="upload"
+          <Route path="products/list"
             element={
               <PrivateRoutes>
-              </PrivateRoutes>} />
+                <ListProducts />
+              </PrivateRoutes>
+            }
+          />
+          <Route path="products/:id"
+            element={
+              <PrivateRoutes>
+                <DetailProduct />
+              </PrivateRoutes>
+            }
+          />
         </Routes>
       </div>
     </div>

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Product.Commands;
@@ -23,13 +24,16 @@ namespace Nivello.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post([FromForm] CreateProductCommand command)
         {
+            command.SystemAdminId = GetCurrentUserId();
             var result = await _mediator.Send(command);
             return Ok(result);
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllProductsQuery());
@@ -37,6 +41,7 @@ namespace Nivello.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -46,6 +51,7 @@ namespace Nivello.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteById(Guid id)
         {
             var result = await _mediator.Send(new DeleteProductCommand(id));
