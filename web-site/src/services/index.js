@@ -1,3 +1,3 @@
-import { GetProducts, UploadFile, Auth } from "./features";
+import { GetProducts, GetProductById, UploadFile, Auth } from "./features";
 
-export { GetProducts, UploadFile, Auth }
+export { GetProducts, GetProductById, UploadFile, Auth }

@@ -4,6 +4,10 @@ const GetProducts = () => {
     return BycodersApi.get('/product');
 }
 
+const GetProductById = (id) => {
+    return BycodersApi.get(`/product/${id}`);
+}
+
 const UploadFile = (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -14,4 +18,4 @@ const Auth = (login) => {
     return BycodersApi.post('/auth/login', login);
 }
 
-export { GetProducts, UploadFile, Auth }
+export { GetProducts, GetProductById, UploadFile, Auth }
