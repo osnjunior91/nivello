@@ -1,5 +1,6 @@
 ﻿using Nivello.Lib.Nivello.Lib.Infrastructure.Data.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Nivello.Infrastructure.Data.Model
 {
@@ -11,5 +12,6 @@ namespace Nivello.Infrastructure.Data.Model
             DateOfBirth = dateOfBirth;
         }
         public DateTime DateOfBirth { get; private set; }
+        public List<AuctionsBid> Bids { get; private set; }
     }
 }

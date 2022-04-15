@@ -29,5 +29,10 @@ namespace Nivello.Infrastructure.Data.Repository.Customers
         {
             return await _dataset.SingleOrDefaultAsync(filter);
         }
+
+        public Task<IEnumerable<Customer>> WhereAsync(Expression<Func<Customer, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

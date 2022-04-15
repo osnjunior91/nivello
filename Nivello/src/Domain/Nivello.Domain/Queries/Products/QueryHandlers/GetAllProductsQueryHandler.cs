@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Nivello.Domain.Queries.Products.QueryHandlers
 {
-    public class GetAllProductsQueryHandler : IQueryHandler<GetAllProductsQuery>
+    public class GetCustomersByNameQueryHandler : IQueryHandler<GetAllProductsQuery>
     {
         private readonly IProductRepository _productRepository;
 
-        public GetAllProductsQueryHandler(IProductRepository productRepository)
+        public GetCustomersByNameQueryHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
         public async Task<QueryResult> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.WhereAsync(ProductsQueries.GetAll());
+            var products = await _productRepository.WhereAsync(CustomerQueries.GetAll());
             return new QueryResult(true, products);
         }
     }

@@ -10,6 +10,8 @@ namespace Nivello.Infrastructure.Data.Configuration
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("customers").HasKey(x => x.Id);
+
+            builder.HasMany(x => x.Bids).WithOne(pk => pk.Customer);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Nivello.Domain.Queries.Products.Queries
 {
-    public static class ProductsQueries
+    public static class CustomerQueries
     {
         public static Expression<Func<Infrastructure.Data.Model.Product, bool>> GetAll()
         {
