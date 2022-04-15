@@ -31,7 +31,7 @@ namespace Nivello.Domain.Commands.Auctions.CommandHandlers
             var lastAction = await _auctionsBidRepository.FirstOrDefaultAsync(AuctionsQueries.GetActiveByProductId(request.ProductId));
             if(lastAction != null)
             {
-                if (lastAction.Amount > request.Amount)
+                if (lastAction.Amount >= request.Amount)
                     throw new ArgumentException("Valor do lance atual deve ser maior que o ultimo lance ativo");
                 lastAction.Inactivate();
             }
@@ -41,7 +41,7 @@ namespace Nivello.Domain.Commands.Auctions.CommandHandlers
                 if(product == null)
                     throw new ArgumentException("Id de produto invalido");
 
-                if (product.Price > request.Amount)
+                if (product.Price >= request.Amount)
                     throw new ArgumentException("Valor do lance atual deve ser maior que o valor do produto.");
             }
             var auctionsBid = new AuctionsBid(request.ProductId, request.CustomerId, request.Amount);

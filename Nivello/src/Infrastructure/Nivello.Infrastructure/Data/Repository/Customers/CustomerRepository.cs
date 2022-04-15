@@ -27,12 +27,12 @@ namespace Nivello.Infrastructure.Data.Repository.Customers
 
         public async Task<Customer> FirstOrDefaultAsync(Expression<Func<Customer, bool>> filter)
         {
-            return await _dataset.SingleOrDefaultAsync(filter);
+            return await _dataset.Include(x => x.Bids).SingleOrDefaultAsync(filter);
         }
 
         public async Task<IEnumerable<Customer>> WhereAsync(Expression<Func<Customer, bool>> filter)
         {
-            return await _dataset.AsQueryable().Where(filter).ToListAsync();
+            return await _dataset.Include(x => x.Bids).AsQueryable().Where(filter).ToListAsync();
         }
     }
 }
