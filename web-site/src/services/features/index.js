@@ -1,7 +1,7 @@
 import { BycodersApi, BycodersApiFormData } from "../axios";
 
-const GetTransactions = () => {
-    return BycodersApi.get('/transaction/store/all');
+const GetProducts = () => {
+    return BycodersApi.get('/product');
 }
 
 const UploadFile = (file) => {
@@ -14,4 +14,4 @@ const Auth = (login) => {
     return BycodersApi.post('/auth/login', login);
 }
 
-export { GetTransactions, UploadFile, Auth }
+export { GetProducts, UploadFile, Auth }

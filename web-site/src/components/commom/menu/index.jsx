@@ -11,7 +11,7 @@ function Menu() {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6">
-                        ByCoders
+                        Nivello
                     </Typography>
                     <div>
                         <Link className="link" to="/upload">

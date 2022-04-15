@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Auth } from "../../../services";
@@ -9,6 +9,7 @@ function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
     const submitForm = () => {
         Auth({ email, password })
@@ -61,6 +62,24 @@ function Login() {
                     variant="outlined"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                />
+            </Grid>
+            <Grid
+                item
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={isAdmin}
+                            onChange={(e) => setIsAdmin(e.target.value)}
+                            name="checkedB"
+                            color="primary"
+                        />
+                    }
+                    label="Voce e administrador"
                 />
             </Grid>
             <Grid

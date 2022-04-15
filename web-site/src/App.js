@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Menu } from './components/commom';
 import './App.css'
 import { PrivateRoutes } from "./PrivateRoutes";
-import { Login, TransactionsView, Upload } from './components/features';
+import { Login, ListProducts } from './components/features';
 
 function App() {
   return (
@@ -12,12 +12,11 @@ function App() {
       </div>
       <div className="container" >
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="transactions" element={<TransactionsView />} />
+          <Route path="/" element={<ListProducts />} />
+          <Route path="products/list" element={<ListProducts />} />
           <Route path="upload"
             element={
               <PrivateRoutes>
-                <Upload />
               </PrivateRoutes>} />
         </Routes>
       </div>

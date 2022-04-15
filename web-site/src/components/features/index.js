@@ -1,5 +1,4 @@
 import Login from './login'
-import Upload from './upload'
-import TransactionsView from './transactions'
+import ListProducts from './products/list'
 
-export { Login, Upload, TransactionsView }
+export { Login, ListProducts }

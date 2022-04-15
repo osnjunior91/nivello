@@ -1,4 +1,4 @@
 import Menu from "./menu";
-import TableDetail from './tables'
+import ImgMediaCard from './card'
 
-export { Menu, TableDetail }
+export { Menu, ImgMediaCard }

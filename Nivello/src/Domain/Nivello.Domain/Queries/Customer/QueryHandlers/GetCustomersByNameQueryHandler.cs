@@ -12,7 +12,7 @@ namespace Nivello.Domain.Queries.Customer.QueryHandlers
         private readonly ICustomerRepository _customerRepository;
 
         public GetCustomersByNameQueryHandler(ICustomerRepository customerRepository)
-        {
+        {   
             _customerRepository = customerRepository;
         }
         public async Task<QueryResult> Handle(GetCustomersByNameQuery request, CancellationToken cancellationToken)
