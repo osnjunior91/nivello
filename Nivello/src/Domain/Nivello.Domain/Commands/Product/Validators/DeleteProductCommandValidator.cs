@@ -8,7 +8,7 @@ namespace Nivello.Domain.Commands.Product.Validators
     {
         public DeleteProductCommandValidator()
         {
-            RuleFor(x => x.Id).NotEmpty().NotNull();
+            RuleFor(x => x.Id).Must(ValidGuidEmpty);
         }
     }
 }
