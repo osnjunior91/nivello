@@ -8,9 +8,9 @@ namespace Nivello.Domain.Commands.Auctions.Validators
     {
         public CreateAuctionsBidCommandValidator()
         {
-            RuleFor(x => x.ProductId).NotEmpty().NotNull();
-            RuleFor(x => x.CustomerId).NotEmpty().NotNull();
-            RuleFor(x => x.Amount).NotEmpty().NotNull();
+            RuleFor(x => x.ProductId).Must(ValidGuidEmpty).NotEmpty().NotNull();
+            RuleFor(x => x.CustomerId).Must(ValidGuidEmpty).NotEmpty().NotNull();
+            RuleFor(x => x.Amount).GreaterThan(0).NotEmpty().NotNull();
         }
     }
 }
