@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-
+import './index.css'
 
 function ProductDetailComponent(props) {
     const { product } = props;
@@ -13,10 +13,10 @@ function ProductDetailComponent(props) {
                 alignItems="center"
                 spacing={1}
             >
-                <Grid item xs={6} direction="row" justifyContent="center" alignItems="center">
-                    <img src={`data:image/png;base64, ${product.imagem}`} alt={product.id} />
+                <Grid item xs={8} direction="row" justifyContent="center" alignItems="center">
+                    <img className='img-detail' src={`data:image/png;base64, ${product.imagem}`} alt={product.id} />
                 </Grid>
-                <Grid item xs={6} direction="column" justifyContent="center" alignItems="center">
+                <Grid item xs={4} direction="column" justifyContent="center" alignItems="center">
                     <Grid item xs={12} justifyContent="center" alignItems="center">
                         <h1>{product.name}</h1>
                     </Grid>
