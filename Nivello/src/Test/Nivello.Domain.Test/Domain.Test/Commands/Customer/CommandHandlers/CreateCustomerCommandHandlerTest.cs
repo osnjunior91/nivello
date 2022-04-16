@@ -31,7 +31,7 @@ namespace Nivello.Test.Domain.Test.Commands.Customer.CommandHandlers
         }
 
         [Test]
-        public void When_CreateCustomerCommandHandlerTest_IsOk()
+        public void When_CreateCustomerCommandHandler_IsOk()
         {
             _customerRepository.Setup(m => m.CreatedAsync(It.IsAny<Infrastructure.Data.Model.Customer>())).Verifiable();
             var handle = new CreateCustomerCommandHandler(_customerRepository.Object);
