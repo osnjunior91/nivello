@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Nivello.Domain.Commands.Auctions.Commands;
+using Nivello.Domain.Queries.Auctions.Queries;
 using Nivello.Lib.Nivello.Application;
 using System.Threading.Tasks;
 
@@ -25,6 +26,15 @@ namespace Nivello.Api.Controllers
         {
             command.CustomerId = GetCurrentUserId();
             var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("profile/bids")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> GetBidsForUser()
+        {
+            var CustomerId = GetCurrentUserId();
+            var result = await _mediator.Send(new GetAuctionsByUserIdQuery(CustomerId));
             return Ok(result);
         }
     }

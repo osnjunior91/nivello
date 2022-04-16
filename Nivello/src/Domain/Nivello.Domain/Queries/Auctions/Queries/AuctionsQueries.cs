@@ -12,6 +12,11 @@ namespace Nivello.Domain.Queries.Auctions.Queries
             return x => x.ProductId == productId && x.IsActive == true;
         }
 
-       
+        public static Expression<Func<AuctionsBid, bool>> GetAuctionsByCustomerId(Guid customerId)
+        {
+            return x => x.CustomerId == customerId;
+        }
+
+
     }
 }

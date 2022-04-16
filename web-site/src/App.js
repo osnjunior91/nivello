@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Menu } from './components/commom';
 import './App.css'
 import { PrivateRoutes } from "./PrivateRoutes";
-import { Login, ListProducts, DetailProduct } from './components/features';
+import { Login, ListProducts, DetailProduct, CustomerBids } from './components/features';
 
 function App() {
   return (
@@ -17,6 +17,13 @@ function App() {
             element={
               <PrivateRoutes>
                 <ListProducts />
+              </PrivateRoutes>
+            }
+          />
+          <Route path="bids/list"
+            element={
+              <PrivateRoutes>
+                <CustomerBids />
               </PrivateRoutes>
             }
           />

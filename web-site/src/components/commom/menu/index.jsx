@@ -19,7 +19,7 @@ function Menu() {
                         </Link>
                     </div>
                     <div>
-                        <Link className="link" to="/transactions">
+                        <Link className="link" to="/bids/list">
                             Visualizar Lances
                         </Link>
                     </div>
