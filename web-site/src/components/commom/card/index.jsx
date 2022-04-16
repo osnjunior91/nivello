@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const useStyles = makeStyles({
@@ -19,6 +20,7 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard(props) {
     const classes = useStyles();
+    const { curentUser } = useSelector(state => state.Auth)
     const { item } = props;
     return (
         <Card className={classes.root}>
@@ -42,7 +44,9 @@ export default function ImgMediaCard(props) {
             <CardActions>
                 <Link to={`/products/${item.id}`}>
                     <Button size="small" color="primary">
-                        Realizar lance
+                        {
+                            (curentUser.isAdmin) ? "Finalizar item" : "Realizar lance"
+                        }
                     </Button>
                 </Link>
 

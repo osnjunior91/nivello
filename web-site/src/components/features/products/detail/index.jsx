@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { GetProductById, AuctionBid } from "../../../../services";
 import { ProductDetailComponent, BidsTable, BidDialog } from "../../../commom";
 
 function DetailProduct() {
     const { id } = useParams();
+    const { curentUser } = useSelector(state => state.Auth)
     const [product, setProduct] = useState([]);
     const [open, setOpen] = useState(false);
     const [bidAmount, setBidAmount] = useState(0);
@@ -44,7 +46,9 @@ function DetailProduct() {
                 </Grid>
                 <Grid item xs={8} direction="row" justifyContent="center" alignItems="center">
                     <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
-                        Dar lance para esse produto
+                        {
+                            (curentUser.isAdmin) ? "Finalizar este item" : "Dar lance para esse produto"
+                        }
                     </Button>
                 </Grid>
                 <Grid item xs={12} direction="row" justifyContent="center" alignItems="center">
