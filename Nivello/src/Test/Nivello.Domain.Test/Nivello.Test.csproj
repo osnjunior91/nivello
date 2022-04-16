@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\Domain\Nivello.Domain\Nivello.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain.Test\Queries\Auctions\QueryHandlers\" />
+  </ItemGroup>
+
 </Project>
