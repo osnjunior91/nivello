@@ -73,14 +73,19 @@ npm start
 
 ## Usar a aplicacao
 ### Como administrador
-- Para acesso aos sistema devem ser usados as credenciais:
+- Para acesso aos sistema devem ser usados as credenciais, geradas pelas migrations:
+-- Voce pode criar um novo usuario administrador, basta acessa o projeto **Nivello.Infrastructure**. nas classe **Context**, como na imagem aseguir: 
+As credenciais definadas foram: 
 
-    | Propriedade | Valor |
+    | Email | Senha |
     | ------ | ------ |
-    | User/Email | **admin** |
-    | Password | **admin**  |
-- O metodo de carregar o arquivo necessita de autenticacao para funcionar, mas os de visualizar nao.
-- Os testes possuem diversos casos, e foram feitos visando as principais rotinas da aplicacao.
+    | admin@nivello.com | **123456** |
+
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/CreateAdmin.png?raw=true)
+
+#### Fazer login no site
+Quando logar como administrador deve ser marcar o parametro na tela de login: 
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/LoginAdm.png?raw=true)
 
 
 ## License
