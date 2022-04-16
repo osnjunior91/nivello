@@ -9,7 +9,7 @@ function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
     const submitForm = () => {
         Auth({ email, password, isAdmin })

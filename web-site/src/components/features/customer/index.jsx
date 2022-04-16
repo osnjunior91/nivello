@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 
-import { GetProducts } from "../../../services";
+import { GetAuctionBidByCustomer } from "../../../services";
+import { BidsTable } from './../../commom/';
 
 function CustomerBids() {
-    const [products, setProducts] = useState([]);
+    const [auctions, setAuctions] = useState([]);
     useEffect(() => {
-        GetProducts()
+        GetAuctionBidByCustomer()
             .then(({ data }) => {
-                setProducts(data.data);
+                setAuctions(data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -24,22 +25,9 @@ function CustomerBids() {
                 spacing={5}
             >
 
-                {
-                    products?.map(item => {
-
-                        return (
-                            <Grid item
-                                xs={12 / products.length}
-                                container
-                                direction="column"
-                                justifyContent="center"
-                                alignItems="center"
-                            >
-                                <h1>item.id</h1>
-                            </Grid>
-                        )
-                    })
-                }
+                <Grid item xs={12} direction="row" justifyContent="center" alignItems="center">
+                    <BidsTable bids={auctions} showProductLink={true} />
+                </Grid>
             </Grid>
         </div>
     )
