@@ -17,7 +17,8 @@ function Login() {
         Auth({ email, password, isAdmin })
             .then(({ data }) => {
                 dispatch(Authentication_Success({
-                    token: data.data
+                    token: data.data,
+                    isAdmin
                 }));
                 sessionStorage.setItem('token-auth', data.data);
                 navigate('/products/list');

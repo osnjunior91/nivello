@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 
 export const PrivateRoutes = ({ children }) => {
 
-    const { token } = useSelector(state => state.Auth)
-    const isAuthenticated = (token.length > 0);
+    const { curentUser } = useSelector(state => state.Auth)
+    const isAuthenticated = (curentUser.token.length > 0);
 
     if (isAuthenticated) {
         return children

@@ -2,13 +2,16 @@ import { combineReducers } from 'redux';
 import { SUCCESS_AUTHENTICATE } from '../actionsType';
 
 const INITIAL_STATE = {
-    token: ''
+    curentUser: {
+        token: '',
+        isAdmin: false
+    }
 };
 
 const SuccessAuthenticateReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SUCCESS_AUTHENTICATE:
-            return { ...state, token: action.token }
+            return { ...state, curentUser: action.curentUser }
         default:
             return state;
     }

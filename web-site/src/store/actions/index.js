@@ -1,9 +1,9 @@
 import { SUCCESS_AUTHENTICATE } from '../actionsType';
 
-const Authentication_Success = ({ token }) => {
+const Authentication_Success = (curentUser) => {
     return {
         type: SUCCESS_AUTHENTICATE,
-        token
+        curentUser
     }
 }
 
