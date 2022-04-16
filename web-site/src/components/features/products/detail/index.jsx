@@ -59,12 +59,12 @@ function DetailProduct() {
                 <Grid item xs={8} direction="row" justifyContent="center" alignItems="center">
 
                     {
-                        (curentUser.idAdmin)
-                            ? <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
-                                Dar lance para esse produto
-                            </Button>
-                            : <Button onClick={deleteProduct} fullWidth variant="contained" color="primary">
+                        (curentUser.isAdmin)
+                            ? <Button onClick={deleteProduct} fullWidth variant="contained" color="primary">
                                 Finalizar este item
+                            </Button>
+                            : <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
+                                Dar lance para esse produto
                             </Button>
                     }
                 </Grid>
