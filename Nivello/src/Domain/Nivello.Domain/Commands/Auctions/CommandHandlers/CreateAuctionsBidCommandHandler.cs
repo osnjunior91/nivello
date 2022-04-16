@@ -28,6 +28,11 @@ namespace Nivello.Domain.Commands.Auctions.CommandHandlers
         {
             var validator = new CreateAuctionsBidCommandValidator();
             validator.ValidateAndThrow(request);
+            var product = await _productRepository.FirstOrDefaultAsync(ProductsQueries.GetById(request.ProductId));
+            if (product == null)
+                throw new ArgumentException("Id de produto invalido");
+            if (product.IsDelete)
+                throw new ArgumentException("Esse item ja foi encerrado.");
             var lastAction = await _auctionsBidRepository.FirstOrDefaultAsync(AuctionsQueries.GetActiveByProductId(request.ProductId));
             if(lastAction != null)
             {
@@ -37,10 +42,6 @@ namespace Nivello.Domain.Commands.Auctions.CommandHandlers
             }
             else
             {
-                var product = await _productRepository.FirstOrDefaultAsync(ProductsQueries.GetById(request.ProductId));
-                if(product == null)
-                    throw new ArgumentException("Id de produto invalido");
-
                 if (product.Price >= request.Amount)
                     throw new ArgumentException("Valor do lance atual deve ser maior que o valor do produto.");
             }

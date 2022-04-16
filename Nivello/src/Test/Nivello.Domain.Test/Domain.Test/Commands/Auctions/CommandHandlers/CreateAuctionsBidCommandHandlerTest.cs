@@ -26,6 +26,8 @@ namespace Nivello.Test.Domain.Test.Commands.Auctions.CommandHandlers
         {
             _auctionsBidRepository = new Mock<IAuctionsBidRepository>();
             _productRepository = new Mock<IProductRepository>();
+            var product = new Infrastructure.Data.Model.Product("Tv 42 Polegadas", 200, null, Guid.NewGuid(), null, null);
+            _productRepository.Setup(m => m.FirstOrDefaultAsync(It.IsAny<Expression<Func<Infrastructure.Data.Model.Product, bool>>>())).ReturnsAsync(product);
         }
 
         [TestCase("00000000-0000-0000-0000-000000000000", "127f0c34-d774-44d4-8d9e-d3c3df8af908", 10)]
@@ -66,9 +68,7 @@ namespace Nivello.Test.Domain.Test.Commands.Auctions.CommandHandlers
         [TestCase("127f0c34-d774-44d4-8d9e-d3c3df8af908", "127f0c34-d774-44d4-8d9e-d3c3df8af908", 199)]
         public void When_Amount_LessThanProductPrice_Faill(Guid productId, Guid customerId, float amount)
         {
-            var product = new Infrastructure.Data.Model.Product("Tv 42 Polegadas", 200, null, Guid.NewGuid(), null, null) ;
             CreateAuctionsBidCommand command = new CreateAuctionsBidCommand(productId, customerId, amount);
-            _productRepository.Setup(m => m.FirstOrDefaultAsync(It.IsAny<Expression<Func<Infrastructure.Data.Model.Product, bool>>>())).ReturnsAsync(product);
             _auctionsBidRepository.Setup(m => m.FirstOrDefaultAsync(It.IsAny<Expression<Func<AuctionsBid, bool>>>())).ReturnsAsync(value: null);
             var handle = new CreateAuctionsBidCommandHandler(_auctionsBidRepository.Object, _productRepository.Object);
             Assert.ThrowsAsync<ArgumentException>(() => handle.Handle(command, new System.Threading.CancellationToken()));
@@ -94,6 +94,18 @@ namespace Nivello.Test.Domain.Test.Commands.Auctions.CommandHandlers
             var handle = new CreateAuctionsBidCommandHandler(_auctionsBidRepository.Object, _productRepository.Object);
             var result = handle.Handle(command, new System.Threading.CancellationToken()).Result;
             Assert.That(result, Is.InstanceOf<CommandResult>());
+        }
+
+        [TestCase("127f0c34-d774-44d4-8d9e-d3c3df8af908", "127f0c34-d774-44d4-8d9e-d3c3df8af908", 201)]
+        public void When_Product_IsDelete_Fail(Guid productId, Guid customerId, float amount)
+        {
+            var product = new Infrastructure.Data.Model.Product("Tv 42 Polegadas", 200, null, Guid.NewGuid(), null, null);
+            product.DeleteEntity();
+            CreateAuctionsBidCommand command = new CreateAuctionsBidCommand(productId, customerId, amount);
+            _productRepository.Setup(m => m.FirstOrDefaultAsync(It.IsAny<Expression<Func<Infrastructure.Data.Model.Product, bool>>>())).ReturnsAsync(product);
+            _auctionsBidRepository.Setup(m => m.FirstOrDefaultAsync(It.IsAny<Expression<Func<AuctionsBid, bool>>>())).ReturnsAsync(value: null);
+            var handle = new CreateAuctionsBidCommandHandler(_auctionsBidRepository.Object, _productRepository.Object);
+            Assert.ThrowsAsync<ArgumentException>(() => handle.Handle(command, new System.Threading.CancellationToken()));
         }
     }
 }
