@@ -63,9 +63,9 @@ function DetailProduct() {
                             ? <Button onClick={deleteProduct} fullWidth variant="contained" color="primary">
                                 Finalizar este item
                             </Button>
-                            : <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
+                            : (!product.isDelete) ? <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
                                 Dar lance para esse produto
-                            </Button>
+                            </Button> : null
                     }
                 </Grid>
                 <Grid item xs={12} direction="row" justifyContent="center" alignItems="center">
