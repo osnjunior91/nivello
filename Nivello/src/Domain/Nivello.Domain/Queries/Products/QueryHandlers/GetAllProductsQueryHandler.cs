@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Nivello.Domain.Queries.Products.QueryHandlers
 {
-    public class GetCustomersByNameQueryHandler : IQueryHandler<GetAllProductsQuery>
+    public class GetAllProductsQueryHandler : IQueryHandler<GetAllProductsQuery>
     {
         private readonly IProductRepository _productRepository;
 
-        public GetCustomersByNameQueryHandler(IProductRepository productRepository)
+        public GetAllProductsQueryHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

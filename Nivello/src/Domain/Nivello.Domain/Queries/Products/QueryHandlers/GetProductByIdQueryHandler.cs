@@ -22,6 +22,11 @@ namespace Nivello.Domain.Queries.Products.QueryHandlers
 
         public async Task<QueryResult> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
+            if(request == null || request?.Id == Guid.Empty)
+            {
+                throw new ArgumentNullException(typeof(GetProductByIdQuery).Name);
+            }
+
             var products = await _productRepository.FirstOrDefaultAsync(ProductsQueries.GetById(request.Id));
             return new QueryResult(true, products);
         }
