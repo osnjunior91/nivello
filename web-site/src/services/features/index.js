@@ -27,4 +27,8 @@ const Auth = (login) => {
     return BycodersApi.post('/auth/login', login);
 }
 
-export { GetProducts, GetProductById, UploadFile, Auth, AuctionBid, GetAuctionBidByCustomer }
+const RegisterCustomer = (customer) => {
+    return BycodersApi.post('/customer', customer);
+}
+
+export { GetProducts, GetProductById, UploadFile, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer }

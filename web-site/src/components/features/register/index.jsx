@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Auth } from "../../../services";
-import { Authentication_Success } from '../../../store/actions';
+import { RegisterCustomer } from "../../../services";
 import { Link } from 'react-router-dom';
 
 
 function Register() {
-    const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [dateOfBirth, setBirthday] = useState(new Date('2014-08-18T21:11:54'));
+    const [dateOfBirth, setBirthday] = useState(new Date());
     const navigate = useNavigate();
     const submitForm = () => {
-        Auth({ email, password })
-            .then(({ data }) => {
-                dispatch(Authentication_Success({
-                    token: data.data
-                }));
-                sessionStorage.setItem('token-auth', data.data);
-                navigate('/products/list');
+        RegisterCustomer({ name, email, password, dateOfBirth })
+            .then(() => {
+                alert("Usuario criado com sucesso");
+                navigate('/');
             })
-            .catch((erro) => {
-                alert('Falha no login');
-                console.log(erro);
+            .catch((error) => {
+                alert(error.response.data.split('\r\n')[1]);
+                console.log(error);
             });
     };
     return (
@@ -108,7 +102,7 @@ function Register() {
                 alignItems="center"
             >
                 <Button
-                    disabled={!email || !password || name}
+                    disabled={!email || !password || !name}
                     fullWidth
                     onClick={submitForm}
                     variant="contained"
