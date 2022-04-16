@@ -1,3 +1,3 @@
-import { GetProducts, GetProductById, UploadFile, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer } from "./features";
+import { GetProducts, GetProductById, ProductPost, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer, ProductDelete } from "./features";
 
-export { GetProducts, GetProductById, UploadFile, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer }
+export { GetProducts, GetProductById, ProductPost, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer, ProductDelete }

@@ -3,7 +3,7 @@ import { Grid, Button } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { GetProductById, AuctionBid } from "../../../../services";
+import { GetProductById, AuctionBid, ProductDelete } from "../../../../services";
 import { ProductDetailComponent, BidsTable, BidDialog } from "../../../commom";
 
 function DetailProduct() {
@@ -21,6 +21,18 @@ function DetailProduct() {
         })
             .then(() => {
                 alert("Seu lance foi registrado com sucesso!");
+                navigate('/products/list');
+            })
+            .catch((error) => {
+                alert(error.response.data.split('\r\n')[0]);
+            });
+
+    }
+
+    const deleteProduct = () => {
+        ProductDelete(id)
+            .then(() => {
+                alert("Produto excluido com sucesso!");
                 navigate('/products/list');
             })
             .catch((error) => {
@@ -45,11 +57,16 @@ function DetailProduct() {
                     <ProductDetailComponent product={product} />
                 </Grid>
                 <Grid item xs={8} direction="row" justifyContent="center" alignItems="center">
-                    <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
-                        {
-                            (curentUser.isAdmin) ? "Finalizar este item" : "Dar lance para esse produto"
-                        }
-                    </Button>
+
+                    {
+                        (curentUser.idAdmin)
+                            ? <Button onClick={() => { setOpen(true) }} fullWidth variant="contained" color="primary">
+                                Dar lance para esse produto
+                            </Button>
+                            : <Button onClick={deleteProduct} fullWidth variant="contained" color="primary">
+                                Finalizar este item
+                            </Button>
+                    }
                 </Grid>
                 <Grid item xs={12} direction="row" justifyContent="center" alignItems="center">
                     <BidsTable bids={product.bids} />

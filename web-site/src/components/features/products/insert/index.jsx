@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Button, TextField } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
-import { UploadFile } from "../../../../services";
+import { ProductPost } from "../../../../services";
 
 
 function InsertProduct() {
@@ -10,11 +10,11 @@ function InsertProduct() {
     const [price, setPrice] = useState(0);
     const navigate = useNavigate();
     const submitForm = () => {
-        UploadFile(imagem).then(() => {
-            alert('Arquivo Carregado');
-            navigate('/transactions');
+        ProductPost({ name, price, imagem }).then(() => {
+            alert('Produto criado com sucesso');
+            navigate('/products/list');
         }).catch((error) => {
-            alert('Falha ao carregar o arquivo')
+            alert(error.response.data.split('\r\n')[1]);
             console.log(error);
         })
     };

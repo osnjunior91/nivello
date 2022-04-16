@@ -1,34 +1,40 @@
-import { BycodersApi, BycodersApiFormData } from "../axios";
+import { NivelloApi, NivelloApiFormData } from "../axios";
 
 const GetProducts = () => {
-    return BycodersApi.get('/product');
+    return NivelloApi.get('/product');
 }
 
 const GetProductById = (id) => {
-    return BycodersApi.get(`/product/${id}`);
+    return NivelloApi.get(`/product/${id}`);
 }
 
 const GetAuctionBidByCustomer = () => {
-    return BycodersApi.get(`/auction/profile/bids`);
+    return NivelloApi.get(`/auction/profile/bids`);
 }
 
 const AuctionBid = (bid) => {
-    return BycodersApi.post(`/auction/bid`, bid);
+    return NivelloApi.post(`/auction/bid`, bid);
 }
 
 
-const UploadFile = (file) => {
+const ProductPost = (product) => {
     const formData = new FormData();
-    formData.append('file', file);
-    return BycodersApiFormData.post('/bulk/file/upload', formData);
+    formData.append('Name', product.name);
+    formData.append('Price', product.price);
+    formData.append('Imagem', product.imagem);
+    return NivelloApiFormData.post('/product', formData);
+}
+
+const ProductDelete = (id) => {
+    return NivelloApi.delete(`/product/${id}`);
 }
 
 const Auth = (login) => {
-    return BycodersApi.post('/auth/login', login);
+    return NivelloApi.post('/auth/login', login);
 }
 
 const RegisterCustomer = (customer) => {
-    return BycodersApi.post('/customer', customer);
+    return NivelloApi.post('/customer', customer);
 }
 
-export { GetProducts, GetProductById, UploadFile, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer }
+export { GetProducts, GetProductById, ProductPost, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer, ProductDelete }
