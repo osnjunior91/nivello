@@ -88,6 +88,25 @@ Quando logar como administrador deve ser marcar o parametro na tela de login:
 ![strong text](https://github.com/osnjunior91/nivello/blob/main/images/LoginAdm.png?raw=true)
 
 
+Apos efetuado o login como administrador sera exibida a seguinte tela: 
+
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/indexadmin.png?raw=true)
+
+##### Nesta tela voce pode: 
+* Visualizar os produtos ativos na base.
+* Inserir novos produtos
+* Finalizar um produto ativo
+
+Voce pode tambem acessar a tela de visualizacao dos clientes: 
+
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/vizualizarcustomer.png?raw=true)
+
+##### Nesta tela voce pode: 
+* Visualizar os lances por cliente.
+* Filtrar por nome do cliente
+* Visualizar o produto em detalhe
+
+
 ## License
 
 MIT
