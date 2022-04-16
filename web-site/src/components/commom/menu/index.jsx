@@ -26,7 +26,7 @@ function Menu() {
                                 <div>
                                     {
                                         (curentUser.isAdmin) ?
-                                            <Link className="link" to="/bids/list">
+                                            <Link className="link" to="/customers/list">
                                                 Visualizar Clientes
                                             </Link>
                                             : <Link className="link" to="/bids/list">

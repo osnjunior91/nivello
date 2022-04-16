@@ -4,6 +4,11 @@ namespace Nivello.Domain.Queries.Customer.Queries
 {
     public class GetCustomersByNameQuery : Query
     {
+        public GetCustomersByNameQuery(string name)
+        {
+            Name = name;
+        }
+
         public string Name { get; set; }
     }
 }

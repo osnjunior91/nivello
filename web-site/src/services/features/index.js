@@ -4,6 +4,10 @@ const GetProducts = () => {
     return NivelloApi.get('/product');
 }
 
+const GetCustomersByName = (name) => {
+    return NivelloApi.get((name) ? `customer/?name=${name}` : `customer/?name=`);
+}
+
 const GetProductById = (id) => {
     return NivelloApi.get(`/product/${id}`);
 }
@@ -37,4 +41,4 @@ const RegisterCustomer = (customer) => {
     return NivelloApi.post('/customer', customer);
 }
 
-export { GetProducts, GetProductById, ProductPost, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer, ProductDelete }
+export { GetCustomersByName, GetProducts, GetProductById, ProductPost, Auth, AuctionBid, GetAuctionBidByCustomer, RegisterCustomer, ProductDelete }

@@ -12,7 +12,9 @@ namespace Nivello.Domain.Queries.Customer.Queries
 
         public static Expression<Func<Infrastructure.Data.Model.Customer, bool>> GetByName(string name)
         {
-            return x => x.Name.Contains(name);
+            return (name?.Length > 0)
+            ? x => x.Name.ToLower().Contains(name.ToLower()) && x.IsDelete == false
+            : x => x.IsDelete == false;
         }
     }
 }

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Menu } from './components/commom';
 import './App.css'
 import { PrivateRoutes } from "./PrivateRoutes";
-import { Login, ListProducts, DetailProduct, CustomerBids, Register, InsertProduct } from './components/features';
+import { Login, ListProducts, DetailProduct, CustomerBids, Register, InsertProduct, ListCustomers } from './components/features';
 
 function App() {
   return (
@@ -18,6 +18,13 @@ function App() {
             element={
               <PrivateRoutes>
                 <ListProducts />
+              </PrivateRoutes>
+            }
+          />
+          <Route path="customers/list"
+            element={
+              <PrivateRoutes>
+                <ListCustomers />
               </PrivateRoutes>
             }
           />

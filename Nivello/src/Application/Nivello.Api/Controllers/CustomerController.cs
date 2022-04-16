@@ -27,11 +27,10 @@ namespace Nivello.Api.Controllers
         }
 
         [HttpGet]
-        [Route("name")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetByName([FromQuery] GetCustomersByNameQuery query)
+        public async Task<IActionResult> GetByName([FromQuery] string name)
         {
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(new GetCustomersByNameQuery(name));
             return Ok(result);
         }
     }
