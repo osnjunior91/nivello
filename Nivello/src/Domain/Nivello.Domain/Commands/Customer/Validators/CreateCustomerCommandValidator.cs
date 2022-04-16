@@ -11,7 +11,7 @@ namespace Nivello.Domain.Commands.Customer.Validators
         {
             RuleFor(x => x.Name).NotEmpty().NotNull();
             RuleFor(x => x.Password).NotEmpty().NotNull();
-            RuleFor(x => x.Email).NotEmpty().NotNull();
+            RuleFor(x => x.Email).NotEmpty().WithMessage("Email Invalido").EmailAddress().WithMessage("Email Invalido");
             RuleFor(x => x.DateOfBirth).Must(ValidAge).WithMessage("Usuario deve ter mais de 18 anos").NotEmpty().NotNull();
         }
 
