@@ -107,6 +107,26 @@ Voce pode tambem acessar a tela de visualizacao dos clientes:
 * Visualizar o produto em detalhe
 
 
+### Como cliente
+
+Para acessar o sistema como cliente deve primeiro, cadastrar um cliente, na tela de login existe o linke **Criar cadastro no sistema** que ira te redirecionar para a pagina de cadastro: 
+
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/cadastro.png?raw=true)
+
+Apos isso basta fazer o login normalmente como customer (sem selecioonar opcao admin na tela de login) e aparecera uma tela parecida com a de admim porem com opcoes diferentes.
+
+![strong text](https://github.com/osnjunior91/nivello/blob/main/images/homecustomer.png?raw=true)
+
+##### Nesta tela voce pode: 
+* Visualizar os produtos ativos.
+* Fazer lance em algum produto.
+* Acessar seu historico de lances.
+
+
+Bom basicamente essas sao as funcionalidades basicas do sistema.
+
+Qualquer duvida me econtro a disposicao.
+
 ## License
 
 MIT
