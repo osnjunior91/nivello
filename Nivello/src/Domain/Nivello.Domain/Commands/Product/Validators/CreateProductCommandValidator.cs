@@ -10,7 +10,7 @@ namespace Nivello.Domain.Commands.Product.Validators
         {
             RuleFor(x => x.Price).NotEmpty().NotNull();
             RuleFor(x => x.Name).NotEmpty().NotNull();
-            RuleFor(x => x.SystemAdminId).NotEmpty().NotNull();
+            RuleFor(x => x.SystemAdminId).Must(ValidGuidEmpty).NotNull();
             RuleFor(x => x.Imagem).NotEmpty().NotNull();
         }
     }
