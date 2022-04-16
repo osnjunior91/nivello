@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nivello.Infrastructure.Data.Model;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Nivello.Infrastructure.Data.Context
 {
+    [ExcludeFromCodeCoverage]
     public class DataContext : DbContext
     {
         public DbSet<SystemAdmin> SystemAdmin { get; set; }

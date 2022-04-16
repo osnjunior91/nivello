@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Nivello.Infrastructure.Data.Migrations
 {
+    [ExcludeFromCodeCoverage]
     public partial class Initial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
